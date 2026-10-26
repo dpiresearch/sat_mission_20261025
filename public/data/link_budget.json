@@ -1,0 +1,675 @@
+{
+ "alt_km": 525.0,
+ "f_up": 145.875,
+ "f_dn": 435.775,
+ "tables": [
+  {
+   "title": "Telemetry downlink (BPSK 1200)",
+   "station": "Portable (handheld Yagi)",
+   "rows": [
+    [
+     "Frequency",
+     "435.775",
+     "MHz"
+    ],
+    [
+     "Spacecraft TX power",
+     "-10.0",
+     "dBW (100 mW)"
+    ],
+    [
+     "Spacecraft line loss",
+     "-1.0",
+     "dB"
+    ],
+    [
+     "Spacecraft antenna gain",
+     "-3.0",
+     "dBi"
+    ],
+    [
+     "EIRP",
+     "-14.0",
+     "dBW"
+    ],
+    [
+     "Slant range",
+     "1756",
+     "km"
+    ],
+    [
+     "Free-space path loss",
+     "-150.1",
+     "dB"
+    ],
+    [
+     "Polarization loss",
+     "-3.0",
+     "dB"
+    ],
+    [
+     "Atmos./ionosphere",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Ground antenna gain",
+     "7.5",
+     "dBi"
+    ],
+    [
+     "Ground line loss",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Ground system noise temp",
+     "26.5",
+     "dBK (450 K)"
+    ],
+    [
+     "G/T",
+     "-19.5",
+     "dB/K"
+    ],
+    [
+     "C/N0",
+     "41.4",
+     "dB-Hz"
+    ],
+    [
+     "Data rate",
+     "30.8",
+     "dB-Hz (1200 bps)"
+    ],
+    [
+     "Required Eb/N0 (incl. impl. loss)",
+     "11.1",
+     "dB"
+    ]
+   ],
+   "margin_db": -0.4491650621166361
+  },
+  {
+   "title": "Transponder downlink, per user (SSB)",
+   "station": "Portable (handheld Yagi)",
+   "rows": [
+    [
+     "Frequency",
+     "435.775",
+     "MHz"
+    ],
+    [
+     "Spacecraft TX power",
+     "-11.5",
+     "dBW (70 mW)"
+    ],
+    [
+     "Spacecraft line loss",
+     "-1.0",
+     "dB"
+    ],
+    [
+     "Spacecraft antenna gain",
+     "-3.0",
+     "dBi"
+    ],
+    [
+     "EIRP",
+     "-15.5",
+     "dBW"
+    ],
+    [
+     "Slant range",
+     "1756",
+     "km"
+    ],
+    [
+     "Free-space path loss",
+     "-150.1",
+     "dB"
+    ],
+    [
+     "Polarization loss",
+     "-3.0",
+     "dB"
+    ],
+    [
+     "Atmos./ionosphere",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Ground antenna gain",
+     "7.5",
+     "dBi"
+    ],
+    [
+     "Ground line loss",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Ground system noise temp",
+     "26.5",
+     "dBK (450 K)"
+    ],
+    [
+     "G/T",
+     "-19.5",
+     "dB/K"
+    ],
+    [
+     "C/N0",
+     "39.9",
+     "dB-Hz"
+    ],
+    [
+     "Noise bandwidth",
+     "33.8",
+     "dB-Hz (2400 Hz)"
+    ],
+    [
+     "Required C/N",
+     "10.0",
+     "dB"
+    ]
+   ],
+   "margin_db": -3.9084846186138904
+  },
+  {
+   "title": "User uplink to transponder (SSB)",
+   "station": "Portable (handheld Yagi)",
+   "rows": [
+    [
+     "Frequency",
+     "145.875",
+     "MHz"
+    ],
+    [
+     "Ground TX power",
+     "7.0",
+     "dBW (5 W)"
+    ],
+    [
+     "Ground line loss",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Ground antenna gain",
+     "5.0",
+     "dBi"
+    ],
+    [
+     "EIRP",
+     "11.5",
+     "dBW"
+    ],
+    [
+     "Slant range",
+     "1756",
+     "km"
+    ],
+    [
+     "Free-space path loss",
+     "-140.6",
+     "dB"
+    ],
+    [
+     "Polarization loss",
+     "-3.0",
+     "dB"
+    ],
+    [
+     "Atmos./ionosphere",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Spacecraft antenna gain",
+     "-3.0",
+     "dBi"
+    ],
+    [
+     "Spacecraft line loss",
+     "-1.0",
+     "dB"
+    ],
+    [
+     "Spacecraft system noise temp",
+     "28.5",
+     "dBK (700 K)"
+    ],
+    [
+     "C/N0",
+     "63.5",
+     "dB-Hz"
+    ],
+    [
+     "Noise bandwidth",
+     "33.8",
+     "dB-Hz (2400 Hz)"
+    ],
+    [
+     "Required C/N",
+     "10.0",
+     "dB"
+    ]
+   ],
+   "margin_db": 19.717008612362285
+  },
+  {
+   "title": "Command uplink (FSK)",
+   "station": "AMSAT command station",
+   "rows": [
+    [
+     "Frequency",
+     "145.875",
+     "MHz"
+    ],
+    [
+     "Ground TX power",
+     "20.0",
+     "dBW (100 W)"
+    ],
+    [
+     "Ground line loss",
+     "-1.5",
+     "dB"
+    ],
+    [
+     "Ground antenna gain",
+     "14.0",
+     "dBi"
+    ],
+    [
+     "EIRP",
+     "32.5",
+     "dBW"
+    ],
+    [
+     "Slant range",
+     "1756",
+     "km"
+    ],
+    [
+     "Free-space path loss",
+     "-140.6",
+     "dB"
+    ],
+    [
+     "Polarization loss",
+     "-3.0",
+     "dB"
+    ],
+    [
+     "Atmos./ionosphere",
+     "-0.5",
+     "dB"
+    ],
+    [
+     "Spacecraft antenna gain",
+     "-3.0",
+     "dBi"
+    ],
+    [
+     "Spacecraft line loss",
+     "-1.0",
+     "dB"
+    ],
+    [
+     "Spacecraft system noise temp",
+     "28.5",
+     "dBK (700 K)"
+    ],
+    [
+     "C/N0",
+     "84.5",
+     "dB-Hz"
+    ],
+    [
+     "Data rate",
+     "39.8",
+     "dB-Hz (9600 bps)"
+    ],
+    [
+     "Required Eb/N0 (incl. impl. loss)",
+     "15.0",
+     "dB"
+    ]
+   ],
+   "margin_db": 29.706708655722473
+  }
+ ],
+ "curves": {
+  "Telemetry - Portable (handheld Yagi)": [
+   [
+    5,
+    -2.18
+   ],
+   [
+    10,
+    -0.45
+   ],
+   [
+    15,
+    1.13
+   ],
+   [
+    20,
+    2.55
+   ],
+   [
+    25,
+    3.79
+   ],
+   [
+    30,
+    4.87
+   ],
+   [
+    35,
+    5.82
+   ],
+   [
+    40,
+    6.63
+   ],
+   [
+    45,
+    7.34
+   ],
+   [
+    50,
+    7.95
+   ],
+   [
+    55,
+    8.46
+   ],
+   [
+    60,
+    8.9
+   ],
+   [
+    65,
+    9.25
+   ],
+   [
+    70,
+    9.54
+   ],
+   [
+    75,
+    9.76
+   ],
+   [
+    80,
+    9.91
+   ],
+   [
+    85,
+    10.01
+   ],
+   [
+    90,
+    10.04
+   ]
+  ],
+  "SSB end-to-end - Portable (handheld Yagi)": [
+   [
+    5,
+    -5.66
+   ],
+   [
+    10,
+    -3.93
+   ],
+   [
+    15,
+    -2.34
+   ],
+   [
+    20,
+    -0.93
+   ],
+   [
+    25,
+    0.31
+   ],
+   [
+    30,
+    1.4
+   ],
+   [
+    35,
+    2.34
+   ],
+   [
+    40,
+    3.16
+   ],
+   [
+    45,
+    3.86
+   ],
+   [
+    50,
+    4.47
+   ],
+   [
+    55,
+    4.98
+   ],
+   [
+    60,
+    5.42
+   ],
+   [
+    65,
+    5.78
+   ],
+   [
+    70,
+    6.06
+   ],
+   [
+    75,
+    6.28
+   ],
+   [
+    80,
+    6.44
+   ],
+   [
+    85,
+    6.53
+   ],
+   [
+    90,
+    6.56
+   ]
+  ],
+  "Telemetry - Fixed (crossed Yagis + LNA)": [
+   [
+    5,
+    8.07
+   ],
+   [
+    10,
+    9.8
+   ],
+   [
+    15,
+    11.39
+   ],
+   [
+    20,
+    12.8
+   ],
+   [
+    25,
+    14.04
+   ],
+   [
+    30,
+    15.13
+   ],
+   [
+    35,
+    16.07
+   ],
+   [
+    40,
+    16.89
+   ],
+   [
+    45,
+    17.59
+   ],
+   [
+    50,
+    18.2
+   ],
+   [
+    55,
+    18.72
+   ],
+   [
+    60,
+    19.15
+   ],
+   [
+    65,
+    19.51
+   ],
+   [
+    70,
+    19.79
+   ],
+   [
+    75,
+    20.01
+   ],
+   [
+    80,
+    20.17
+   ],
+   [
+    85,
+    20.26
+   ],
+   [
+    90,
+    20.29
+   ]
+  ],
+  "SSB end-to-end - Fixed (crossed Yagis + LNA)": [
+   [
+    5,
+    4.61
+   ],
+   [
+    10,
+    6.34
+   ],
+   [
+    15,
+    7.92
+   ],
+   [
+    20,
+    9.34
+   ],
+   [
+    25,
+    10.58
+   ],
+   [
+    30,
+    11.66
+   ],
+   [
+    35,
+    12.61
+   ],
+   [
+    40,
+    13.42
+   ],
+   [
+    45,
+    14.13
+   ],
+   [
+    50,
+    14.74
+   ],
+   [
+    55,
+    15.25
+   ],
+   [
+    60,
+    15.68
+   ],
+   [
+    65,
+    16.04
+   ],
+   [
+    70,
+    16.33
+   ],
+   [
+    75,
+    16.55
+   ],
+   [
+    80,
+    16.7
+   ],
+   [
+    85,
+    16.8
+   ],
+   [
+    90,
+    16.83
+   ]
+  ]
+ },
+ "per_user_mw": 69.99999999999999,
+ "users": 5,
+ "doppler_up_khz": 3.4139142384952517,
+ "doppler_dn_khz": 10.19844714502326,
+ "stations": {
+  "Portable (handheld Yagi)": {
+   "up_w": 5.0,
+   "up_gain": 5.0,
+   "dn_gain": 7.5,
+   "line_up": 0.5,
+   "line_dn": 0.5,
+   "tsys_dn": 450.0
+  },
+  "Fixed (crossed Yagis + LNA)": {
+   "up_w": 50.0,
+   "up_gain": 12.0,
+   "dn_gain": 15.0,
+   "line_up": 1.5,
+   "line_dn": 0.3,
+   "tsys_dn": 250.0
+  },
+  "AMSAT command station": {
+   "up_w": 100.0,
+   "up_gain": 14.0,
+   "dn_gain": 16.0,
+   "line_up": 1.5,
+   "line_dn": 0.3,
+   "tsys_dn": 200.0
+  }
+ },
+ "e2e_portable_10": -3.927290528615366,
+ "e2e_fixed_10": 6.339225596505649
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spacecraft · DPI LTM CubeSat</title>
+<meta name="description" content="DPI LTM CubeSat: a 1U PROVES-based CubeSat flying the AMSAT Linear Transponder Module.">
+<link rel="stylesheet" href="styles.css">
+<script>window.CHAT_API = "https://ft7wexcs4a3gsxrlkjhkfuvalu0zglan.lambda-url.us-east-1.on.aws/";</script><script src="chat.js" defer></script>
+</head>
+<body>
+<header class="site"><div class="inner">
+<a class="brand" href="index.html">🛰️ DPI LTM CubeSat</a>
+<nav><a href="index.html">Mission</a><a href="spacecraft.html" class="active">Spacecraft</a><a href="mockup.html">3D mockup</a><a href="conops.html">ConOps</a><a href="power.html">Power budget</a><a href="link.html">Link budget</a><a href="das.html">Debris (DAS)</a><a href="resources.html">Resources</a><a href="ask.html">Ask AI</a></nav>
+</div></header>
+<main>
+
+<section class="hero"><div class="kicker">Spacecraft</div>
+<h1>A PROVES Kit 1U bus with an AMSAT LTM payload</h1>
+<p class="lede">The spacecraft is built almost entirely from open-source PROVES Kit hardware. The one custom board is a
+PROVES V5d flight controller with its on-board radios removed and replaced by an interface to the LTM.</p></section>
+
+<h2>Subsystems</h2>
+<div class="grid">
+<div class="card"><h3>Payload: AMSAT LTM</h3>
+<p>A V/u linear transponder (SSB/CW, 30 kHz passband) with a 1200 bps BPSK telemetry beacon and a command receiver.
+It is a three-board PC-104 stack (transponder at the bottom, the ICR command receiver in the middle, and the LTI host interface on top), 92 × 90 × 33 mm, 130 g, running on 5–7 V.
+It has flight heritage on HuskySat-1, Fox-1E and MESAT1.</p><p><a href="https://www.amsat.org/amsat-linear-transponder-module/">amsat.org → LTM</a></p></div>
+<div class="card"><h3>Flight controller: FC V5d LTM</h3>
+<p>RP2350 running CircuitPython, with an LSM6DSO IMU, LIS2MDL magnetometer, RTC and SD NAND. The RFM98/E28 radios are replaced by an
+MCP25625 CAN controller (1 Mbit/s) and a switched 5 V LTM supply that stays off at boot and is enabled after
+antenna deployment. The board also carries umbilical sense, console and telemetry lines and a host temperature sensor.</p>
+<p><a href="https://github.com/dpiresearch/claude_flight_board/tree/main/hardware/FC_V5d_LTM_mods_20261010">FC_V5d_LTM_mods_20261010</a> · <a href="https://github.com/dpiresearch/claude_flight_board/tree/main/firmware">firmware / ltm1 driver</a></p></div>
+<div class="card"><h3>EPS</h3>
+<p>The EPS sits on the flight controller: an LT3652 2S solar charger (8.38 V float, 1 A), a TPS54226 3.3 V rail, the TPS54225 5 V
+LTM rail, INA219 battery and solar monitors, per-face load switches, and TPS4H160 burn-wire and heater drivers.</p></div>
+<div class="card"><h3>Battery pack v2</h3>
+<p>Four 18650 Li-ion cells in 2S2P (NCR18650B class, about 48 Wh at 7.2 V), with an R5460 2-cell protector,
+back-to-back FETs and four TMP112 temperature sensors.</p><p><a href="https://github.com/proveskit/battery_board/tree/main/battery_pack_v2">battery_pack_v2</a></p></div>
+<div class="card"><h3>Solar: XY Faces V2a</h3>
+<p>Six KXOB101K08TF mono-Si cells per face in 2s3p, with Schottky-isolated strings. Each panel also carries a
+MCP9808 temperature sensor, a VEML7700 light sensor and a DRV2605L-driven PCB magnetorquer coil.
+About 1.6 W per face at normal incidence (AM0, BOL).</p><p><a href="https://github.com/proveskit/solar_boards/tree/main/XY_Faces_V2a">XY_Faces_V2a</a></p></div>
+<div class="card"><h3>Antenna top cap v2c</h3>
+<p>A +Z endcap with burn-wire-released tape-measure elements, a CSD17576 burn FET, a balun, an MMCX feed and
+sun/temperature sensors.</p><p><a href="https://github.com/proveskit/antenna-board/tree/main/antenna_top_cap_v2c">antenna_top_cap_v2c</a></p></div>
+<div class="card"><h3>Structure</h3>
+<p>The PROVES 1U frame is made of 1.6 mm 5052 aluminium sheet with PA-12 feet, M2.5 self-clinching fasteners and normally-closed
+deployment switches. It has been vibration-tested to 20 g RMS and thermally cycled.</p><p><a href="https://github.com/proveskit/Documentation">PROVES documentation</a></p></div>
+<div class="card"><h3>ADCS</h3>
+<p>Passive and magnetic. B-dot detumble uses the face PCB coils and the torque rods/air coil from the PROVES build. No pointing is
+required: the transponder and beacon work while the spacecraft tumbles, at the cost of the antenna-null allowance in the link budget.</p></div>
+</div>
+
+<h2>System block diagram</h2>
+<div class="table-wrap" style="padding:1rem"><pre class="mono" style="margin:0;line-height:1.35">
+ Solar faces x5 ──(2s3p, Schottky OR)──► LT3652 charger ──► 2S2P 18650 pack (6.0–8.4 V, VBUSP)
+                                                                │
+          ┌──────────────────────── FC V5d LTM ─────────────────┼─────────────────────────┐
+          │  TPS54226 ─► +3V3 ─► RP2350, IMU, mag, RTC, SD, MCP23017, sensors            │
+          │  TPS54225 ─► LTM_VSYS 5 V  (EN = MCP23017 GPB6, forced on by USB umbilical)  │
+          │  MCP25625 ─► CAN 1 Mbit/s ─────────────┐                                      │
+          │  TPS4H160 ─► burn wire, heater          │   I2C (LTM master) ─► MAX31725      │
+          └────────────────────────────────────────┼──────────────────────────────────────┘
+                                                   ▼  J30 harness
+                                   AMSAT LTM-1 (LTI · ICR · Transponder)
+                                    │ 2 m RX (uplink)      │ 70 cm TX (downlink)
+                                    ▼                      ▼
+                          V-band element (TBD)      Antenna top cap v2c
+</pre></div>
+
+<h2>Mass budget</h2>
+<p>This budget is derived from the PROVES Atlas DAS component list (<a href="https://github.com/proveskit/The-PROVES-Project-DAS">The-PROVES-Project-DAS</a>),
+with the PROVES payload board and camera replaced by the LTM and its harness.</p>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th class="num">Qty</th><th class="num">Unit (g)</th><th class="num">Total (g)</th><th>Source</th></tr></thead><tbody><tr><td>Primary structure (PROVES 1U frame)</td><td class="num">1</td><td class="num">92.0</td><td class="num">92.0</td><td>Atlas DAS</td></tr><tr><td>Flight controller (FC V5d LTM)</td><td class="num">1</td><td class="num">44.6</td><td class="num">44.6</td><td>Atlas DAS</td></tr><tr><td>Battery pack board (battery_pack_v2)</td><td class="num">1</td><td class="num">44.6</td><td class="num">44.6</td><td>Atlas DAS</td></tr><tr><td>Li-ion 18650 cells (2S2P)</td><td class="num">4</td><td class="num">46.0</td><td class="num">184.0</td><td>Atlas DAS / NCR18650B</td></tr><tr><td>AMSAT LTM (3-board PC-104 stack)</td><td class="num">1</td><td class="num">130.0</td><td class="num">130.0</td><td>amsat.org LTM page</td></tr><tr><td>LTM harness (J30 to H1/H2)</td><td class="num">1</td><td class="num">10.0</td><td class="num">10.0</td><td>estimate</td></tr><tr><td>Solar panels (XY_Faces_V2a / Z)</td><td class="num">5</td><td class="num">2.5</td><td class="num">12.5</td><td>Atlas DAS</td></tr><tr><td>Solar cells (KXOB101K08TF)</td><td class="num">30</td><td class="num">3.3</td><td class="num">99.0</td><td>Atlas DAS</td></tr><tr><td>Antenna top cap (v2c)</td><td class="num">1</td><td class="num">42.7</td><td class="num">42.7</td><td>Atlas DAS</td></tr><tr><td>Tape-measure antenna elements</td><td class="num">2</td><td class="num">0.1</td><td class="num">0.2</td><td>Atlas DAS</td></tr><tr><td>Card brackets</td><td class="num">6</td><td class="num">4.4</td><td class="num">26.4</td><td>Atlas DAS</td></tr><tr><td>L-brackets</td><td class="num">4</td><td class="num">2.4</td><td class="num">9.6</td><td>Atlas DAS</td></tr><tr><td>Feet (PA-12)</td><td class="num">8</td><td class="num">2.1</td><td class="num">16.8</td><td>Atlas DAS</td></tr><tr><td>M2.5 fasteners</td><td class="num">44</td><td class="num">0.3</td><td class="num">13.2</td><td>Atlas DAS</td></tr><tr><td>M2.5 bolts + locknuts</td><td class="num">16</td><td class="num">1.0</td><td class="num">16.0</td><td>Atlas DAS</td></tr><tr><td>Wire harnessing</td><td class="num">1</td><td class="num">170.0</td><td class="num">170.0</td><td>Atlas DAS</td></tr><tr><td>Torque rod cores</td><td class="num">1</td><td class="num">81.0</td><td class="num">81.0</td><td>Atlas DAS (2 rods combined)</td></tr><tr><td>Torque rod windings</td><td class="num">2</td><td class="num">4.0</td><td class="num">8.0</td><td>Atlas DAS</td></tr><tr><td>Magnetorquer air coil</td><td class="num">1</td><td class="num">200.0</td><td class="num">200.0</td><td>Atlas DAS</td></tr><tr class="total"><td><b>Current best estimate</b></td><td class="num"></td><td class="num"></td><td class="num"><b>1201</b></td><td></td></tr><tr><td>Contingency (5 %)</td><td class="num"></td><td class="num"></td><td class="num">60</td><td></td></tr><tr class="total"><td><b>Maximum expected value</b></td><td class="num"></td><td class="num"></td><td class="num"><b>1261</b></td><td>CDS 1U limit 2000 g</td></tr></tbody></table></div>
+
+<h2>Open design items</h2>
+<div class="callout warn">
+<p><b>1. V-band (2 m) receive antenna.</b> The antenna top cap's tape elements are about 0.18 m long, which is a 70 cm quarter-wave.
+The LTM's uplink is in the 144 MHz band and needs its own element (about 0.5 m quarter-wave) or a diplexed dual-band arrangement.
+The link budget assumes a dedicated V-band monopole.</p>
+<p><b>2. Charger operating point.</b> The LT3652 input-regulation threshold (about 8.44 V) and startup headroom need to be checked
+on the bench against the 2S panel's V<sub>mp</sub> and V<sub>oc</sub> at hot and cold temperatures. The power budget carries a 10 % operating-point loss for this.</p>
+<p><b>3. FC V5d LTM layout.</b> Parts are placed but not routed (87 ratsnest connections). The J30–LTM harness has not been designed yet.</p>
+<p><b>4. LTM interface details.</b> CAN termination, the host temperature-sensor address and health-message encoding all need to be confirmed with AMSAT.
+The interface follows AMSAT's partner documentation, which is not reproduced on this site.</p>
+<p><b>5. Part-number reconciliation.</b> The solar cell part (KXOB101K08TF vs SM101K07TF) and the battery protector variant differ between
+README, schematic and footprint in the source repositories.</p>
+</div>
+
+</main>
+<footer class="site"><div class="inner">
+DPI Research · AMSAT · Arrow Technologies of Texas — a PROVES Kit 1U CubeSat carrying the AMSAT Linear Transponder Module.
+Analyses are engineering estimates for planning; see each page for assumptions. Site source: <a href="https://github.com/dpiresearch/sat_mission_20261025">https://github.com/dpiresearch/sat_mission_20261025</a>.
+</div></footer>
+</body>
+</html>

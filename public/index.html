@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission overview · DPI LTM CubeSat</title>
+<meta name="description" content="DPI LTM CubeSat: a 1U PROVES-based CubeSat flying the AMSAT Linear Transponder Module.">
+<link rel="stylesheet" href="styles.css">
+<script>window.CHAT_API = "https://ft7wexcs4a3gsxrlkjhkfuvalu0zglan.lambda-url.us-east-1.on.aws/";</script><script src="chat.js" defer></script>
+</head>
+<body>
+<header class="site"><div class="inner">
+<a class="brand" href="index.html">🛰️ DPI LTM CubeSat</a>
+<nav><a href="index.html" class="active">Mission</a><a href="spacecraft.html">Spacecraft</a><a href="mockup.html">3D mockup</a><a href="conops.html">ConOps</a><a href="power.html">Power budget</a><a href="link.html">Link budget</a><a href="das.html">Debris (DAS)</a><a href="resources.html">Resources</a><a href="ask.html">Ask AI</a></nav>
+</div></header>
+<main>
+
+<section class="hero">
+<div class="kicker">1U CubeSat · Amateur-radio linear transponder · Launch target Nov 2027</div>
+<h1>Flying the AMSAT Linear Transponder Module on a PROVES Kit 1U</h1>
+<p class="lede">DPI LTM CubeSat puts AMSAT's flight-proven V/u <b>Linear Transponder Module (LTM-1)</b> on an open-source
+<b>PROVES Kit</b> 1U bus, with a modified PROVES V5d flight controller that drives the LTM over CAN. When it's in orbit, amateur radio
+operators around the world will be able to make SSB and CW contacts through a 30 kHz passband. The 1200 bps BPSK
+telemetry beacon will be received by the global FoxTelem ground network.</p>
+</section>
+
+<div class="stats">
+<div class="stat"><div class="label">Form factor</div><div class="value">1U</div><div class="sub">1.26 kg MEV (limit 2.0 kg)</div></div>
+<div class="stat"><div class="label">Payload</div><div class="value">AMSAT LTM</div><div class="sub">V/u linear transponder, 30 kHz</div></div>
+<div class="stat"><div class="label">Orbit (TBC)</div><div class="value">525 km SSO</div><div class="sub">97.5° · 95.1 min period</div></div>
+<div class="stat"><div class="label">Launch</div><div class="value">Transporter-22</div><div class="sub">SpaceX rideshare · Nov 2027 (target)</div></div>
+<div class="stat"><div class="label">Orbit-avg power</div><div class="value">0.78 W</div><div class="sub">EOL, tumbling, worst-case β = 0°</div></div>
+<div class="stat"><div class="label">Orbital lifetime</div><div class="value">~7 yr</div><div class="sub">at 525 km; DAS-calibrated estimate</div></div>
+</div>
+
+<h2>Mission objectives</h2>
+<ol>
+<li><b>Demonstrate the AMSAT LTM on an open-source university bus.</b> The LTM's command, telemetry and transponder functions run on a PROVES Kit spacecraft instead of an AMSAT Fox bus.</li>
+<li><b>Provide a public V/u linear transponder</b> (SSB/CW, 30 kHz passband) for the worldwide amateur-satellite community.</li>
+<li><b>Return health and science telemetry</b> on a 1200 bps BPSK beacon decoded by <a href="https://www.amsat.org/foxtelem-software-for-windows-mac-linux/">FoxTelem</a>, including host temperatures and bus data that the flight controller sends to the LTM over CAN.</li>
+<li><b>Validate the FC V5d LTM interface board</b> (CAN, switched 5 V LTM supply, umbilical and telemetry lines) as a reusable path for other PROVES users who want to fly the LTM.</li>
+</ol>
+
+<h2>Explore the mission</h2>
+<div class="grid">
+<a class="card" href="spacecraft.html"><h3>Spacecraft →</h3><p>Subsystems, open-source hardware, mass budget and open design items.</p></a>
+<a class="card" href="conops.html"><h3>Concept of operations →</h3><p>The mission from integration and launch through deployment, commissioning, transponder operations and reentry.</p></a>
+<a class="card" href="power.html"><h3>Power budget →</h3><p>Solar generation, mode-by-mode loads, battery state of charge, and how much transponder time the bus can sustain.</p></a>
+<a class="card" href="link.html"><h3>Link budget →</h3><p>Telemetry, transponder and command links for portable and fixed ground stations, plus Doppler.</p></a>
+<a class="card" href="das.html"><h3>Debris assessment (DAS) →</h3><p>Orbital lifetime, NASA-STD-8719.14 compliance and the FCC 5-year rule, with a DAS project ready to open.</p></a>
+<a class="card" href="resources.html"><h3>Resources →</h3><p>GitHub repositories, AMSAT pages, PROVES documentation and regulatory references.</p></a>
+</div>
+
+<h2>Partners</h2>
+<div class="grid">
+<div class="card"><h3>DPI Research</h3><p>Mission lead. Owns spacecraft integration, the LTM flight-controller interface and mission analysis.</p></div>
+<div class="card"><h3>AMSAT</h3><p>Supplies the Linear Transponder Module, its flight software and ground tools, plus command-station support. <a href="https://www.amsat.org/amsat-linear-transponder-module/">LTM page</a></p></div>
+<div class="card"><h3>Arrow Technologies of Texas</h3><p>Engineering support through design, integration and launch.</p></div>
+<div class="card"><h3>PROVES Kit (Bronco Space, Cal Poly Pomona)</h3><p>Open-source 1U structure, battery, solar and antenna boards. <a href="https://github.com/proveskit">github.com/proveskit</a></p></div>
+</div>
+
+<h2>Timeline</h2>
+<ul class="timeline">
+<li><div class="when">2026</div><div class="what">MOU signed between DPI Research and AMSAT; FC V5d LTM interface design (Oct 2026).</div></li>
+<li><div class="when">2026 – 2027</div><div class="what">Board layout and routing, FlatSat with the LTM, flight software, IARU coordination and FCC filing, environmental test.</div></li>
+<li><div class="when">2027</div><div class="what">Final integration, AMSAT LTM acceptance testing, delivery to the dispenser provider.</div></li>
+<li><div class="when">Nov 2027</div><div class="what">Launch on SpaceX Transporter-22 (target).</div></li>
+<li><div class="when">Post-launch</div><div class="what">Commissioning, then transponder operations for the amateur community until reentry.</div></li>
+</ul>
+
+</main>
+<footer class="site"><div class="inner">
+DPI Research · AMSAT · Arrow Technologies of Texas — a PROVES Kit 1U CubeSat carrying the AMSAT Linear Transponder Module.
+Analyses are engineering estimates for planning; see each page for assumptions. Site source: <a href="https://github.com/dpiresearch/sat_mission_20261025">https://github.com/dpiresearch/sat_mission_20261025</a>.
+</div></footer>
+</body>
+</html>

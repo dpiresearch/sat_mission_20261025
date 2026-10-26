@@ -1,0 +1,3 @@
+Payloads
+Payload Name,Mission Duration (yrs),Operational Perigee (km),Operational Apogee(km),Operational Inclination(deg),RAAN (deg),Argument Of Perigee (deg),Mean Anomaly (deg),Post Mission Disposal Maneuver (y/n),Disposal Perigee (km),Disposal Apogee (km),Disposal Inclination (deg),Disposal RAAN (deg),Disposal Argument Of Perigee (deg),Disposal Mean Anomaly (deg),Initial Mass (kg),Final Mass (kg),Final Area To Mass (m^2/kg),Station Keeping (y/n),Long Term Reentry (y/n)
+DPI LTM CubeSat,2,525,525,97.5,,,,n,,,,,,,1.261,1.261,0.01348,n,y

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept of operations · DPI LTM CubeSat</title>
+<meta name="description" content="DPI LTM CubeSat: a 1U PROVES-based CubeSat flying the AMSAT Linear Transponder Module.">
+<link rel="stylesheet" href="styles.css">
+<script>window.CHAT_API = "https://ft7wexcs4a3gsxrlkjhkfuvalu0zglan.lambda-url.us-east-1.on.aws/";</script><script src="chat.js" defer></script>
+</head>
+<body>
+<header class="site"><div class="inner">
+<a class="brand" href="index.html">🛰️ DPI LTM CubeSat</a>
+<nav><a href="index.html">Mission</a><a href="spacecraft.html">Spacecraft</a><a href="mockup.html">3D mockup</a><a href="conops.html" class="active">ConOps</a><a href="power.html">Power budget</a><a href="link.html">Link budget</a><a href="das.html">Debris (DAS)</a><a href="resources.html">Resources</a><a href="ask.html">Ask AI</a></nav>
+</div></header>
+<main>
+
+<section class="hero"><div class="kicker">Concept of operations</div>
+<h1>From the dispenser to a public linear transponder</h1>
+<p class="lede">The spacecraft tumbles freely and needs no pointing. Operations come down to managing energy: the beacon runs all the time,
+and the transponder is scheduled for when and where operators want it.</p></section>
+
+<div class="stats">
+<div class="stat"><div class="label">Orbit (TBC)</div><div class="value">525 km SSO</div><div class="sub">97.5° incl · 95.1 min</div></div>
+<div class="stat"><div class="label">Longest pass ≥10°</div><div class="value">8 min</div><div class="sub">footprint radius 2504 km at 0°</div></div>
+<div class="stat"><div class="label">Eclipse (β=0°)</div><div class="value">36 min</div><div class="sub">per orbit, worst case</div></div>
+<div class="stat"><div class="label">Transponder time</div><div class="value">~69 min/day</div><div class="sub">power-limited, β = 0° worst case</div></div>
+</div>
+
+<h2>Mission phases</h2>
+<ul class="timeline"><li><div class="when">0 · Integration &amp; test <span class="badge good" style="margin-left:.4rem">Pre-launch</span></div><div class="what">FlatSat with the LTM on the bench, powered from the USB umbilical (which forces LTM_VSYS on). AMSAT&#x27;s LTM acceptance test procedure is run, followed by flight-software qualification of the ltm1 CAN driver and environmental tests (random vibration, thermal vacuum and thermal cycling). The spacecraft is delivered with its RBF pin and with the deployment switches holding it powered off.</div></li><li><div class="when">1 · Launch <span class="badge good" style="margin-left:.4rem">L-0</span></div><div class="what">Integrated in a 1U slot of a rideshare dispenser on SpaceX Transporter-22. Deployment switches and inhibits keep the battery disconnected, so there is no RF and no power during ascent.</div></li><li><div class="when">2 · Deployment &amp; quiet period <span class="badge good" style="margin-left:.4rem">T+0 → T+30 min</span></div><div class="what">The deployment switches close and the RP2350 boots. It logs the boot count, starts the RTC and keeps the LTM rail OFF (R125 pull-down). No deployables fire and no RF is transmitted for 30 minutes. Magnetic B-dot detumble starts using the face coils.</div></li><li><div class="when">3 · Antenna deployment <span class="badge good" style="margin-left:.4rem">T+30 min</span></div><div class="what">The burn wire is fired through the TPS4H160 DEPLOY channel (about 1–2 A for a few seconds). The deployment flag is set in non-volatile memory. If the first burn fails, the software retries on later orbits with a sunlit-battery check.</div></li><li><div class="when">4 · LTM power-on &amp; first beacon <span class="badge good" style="margin-left:.4rem">T+45 min</span></div><div class="what">Flight software enables LTM_VSYS through MCP23017 GPB6, which is allowed only once antennas are deployed. The LTM boots in safe mode and starts its 1200 bps BPSK telemetry beacon. The FC begins sending health data (temperatures, UTC) over CAN.</div></li><li><div class="when">5 · Commissioning <span class="badge good" style="margin-left:.4rem">Week 1 – 4</span></div><div class="what">The AMSAT command station checks LTM and bus health. FoxTelem stations worldwide upload frames to the AMSAT telemetry server. Team members verify the power and thermal trends against this site&#x27;s budgets, then run short scheduled transponder tests.</div></li><li><div class="when">6 · Nominal operations <span class="badge good" style="margin-left:.4rem">Month 1 → EOL</span></div><div class="what">The beacon runs continuously. The transponder is power-limited to about 5–8 % duty (about 69 min/day at β = 0°). It is scheduled over high-demand regions (North America, Europe, Japan) and weekend events, with a battery-gated fallback (ON above 80 % state of charge, OFF below 70 %).</div></li><li><div class="when">7 · Safe mode <span class="badge good" style="margin-left:.4rem">Any time</span></div><div class="what">Triggered by low state of charge, a watchdog reset, an over- or under-temperature condition or a ground command. The LTM drops to safe mode (40 mA), the FC slows its clock, and the battery heater is thermostatic. Recovery is by ground command once the battery has charged.</div></li><li><div class="when">8 · End of mission &amp; disposal <span class="badge good" style="margin-left:.4rem">~7 yr at 525 km</span></div><div class="what">On ground command the LTM transmitter is permanently disabled (FCC requires the ability to cease emissions). The spacecraft decays passively, and DAS shows every component demises on reentry.</div></li></ul>
+
+<h2>Operating modes</h2>
+<div class="modes"><div class="mode"><b>Detumble (LEOP)</b><span>0.47 W orbit-avg load</span></div><div class="mode"><b>Safe</b><span>0.50 W orbit-avg load</span></div><div class="mode"><b>Beacon (telemetry only)</b><span>0.68 W orbit-avg load</span></div><div class="mode"><b>Transponder (typical load)</b><span>2.86 W orbit-avg load</span></div><div class="mode"><b>Transponder (max load)</b><span>3.84 W orbit-avg load</span></div></div>
+<p>Mode transitions are owned by the FC flight software. The LTM's own mode is requested over CAN, and AMSAT ground commands to the LTM
+can override it. See the <a href="power.html">power budget</a> for line-item loads.</p>
+
+<h2>Ground segment</h2>
+<div class="grid">
+<div class="card"><h3>AMSAT command station(s)</h3><p>High-gain stations uplink commands to the LTM command receiver (20 kHz FSK). This link has
+more than 30 dB margin at 10° elevation.</p></div>
+<div class="card"><h3>FoxTelem network</h3><p>Volunteer stations decode the 1200 bps BPSK beacon with <a href="https://www.amsat.org/foxtelem-software-for-windows-mac-linux/">FoxTelem</a> and forward
+frames to AMSAT's server, so coverage is global rather than limited to a single team ground station.</p></div>
+<div class="card"><h3>Amateur users</h3><p>Users work SSB and CW through the 30 kHz V/u passband. Uplink Doppler is ±3.4 kHz and downlink
+±10.2 kHz, so full-duplex Doppler tracking (for example with SatPC32 or Gpredict) is recommended.</p></div>
+<div class="card"><h3>Mission team</h3><p>Reviews telemetry trends, plans transponder schedules and coordinates with AMSAT operations.</p></div>
+</div>
+
+<h2>Licensing & coordination</h2>
+<ul>
+<li>IARU amateur-satellite frequency coordination (<a href="https://www.iaru.org/reference/satellites/">iaru.org</a>, <a href="https://iaru.amsat-uk.org/">status</a>).</li>
+<li>FCC Part 97 amateur space station notification, with an Orbital Debris Assessment Report built from <a href="das.html">DAS</a>.</li>
+<li>The launch-provider ICD and dispenser compliance (CubeSat Design Specification rev 14.1).</li>
+</ul>
+
+</main>
+<footer class="site"><div class="inner">
+DPI Research · AMSAT · Arrow Technologies of Texas — a PROVES Kit 1U CubeSat carrying the AMSAT Linear Transponder Module.
+Analyses are engineering estimates for planning; see each page for assumptions. Site source: <a href="https://github.com/dpiresearch/sat_mission_20261025">https://github.com/dpiresearch/sat_mission_20261025</a>.
+</div></footer>
+</body>
+</html>

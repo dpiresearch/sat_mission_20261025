@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D mockup · DPI LTM CubeSat</title>
+<meta name="description" content="DPI LTM CubeSat: a 1U PROVES-based CubeSat flying the AMSAT Linear Transponder Module.">
+<link rel="stylesheet" href="styles.css">
+<script>window.CHAT_API = "https://ft7wexcs4a3gsxrlkjhkfuvalu0zglan.lambda-url.us-east-1.on.aws/";</script><script src="chat.js" defer></script><script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script><script type="module" src="mockup.js"></script>
+</head>
+<body>
+<header class="site"><div class="inner">
+<a class="brand" href="index.html">🛰️ DPI LTM CubeSat</a>
+<nav><a href="index.html">Mission</a><a href="spacecraft.html">Spacecraft</a><a href="mockup.html" class="active">3D mockup</a><a href="conops.html">ConOps</a><a href="power.html">Power budget</a><a href="link.html">Link budget</a><a href="das.html">Debris (DAS)</a><a href="resources.html">Resources</a><a href="ask.html">Ask AI</a></nav>
+</div></header>
+<main>
+
+<section class="hero"><div class="kicker">3D mockup</div>
+<h1>Inside the DPI LTM CubeSat</h1>
+<p class="lede">An interactive engineering mockup of the 1U spacecraft. Drag to orbit, scroll to zoom, and hover over any part for details.
+Use <b>Explode</b> to pull the stack apart and <b>Hide panels</b> to see the AMSAT LTM-1 board stack inside.</p></section>
+
+<div class="mockup-wrap">
+  <div id="mockup" role="img" aria-label="3D model of a 1U CubeSat with solar panels, deployed tape antennas and an internal three-board AMSAT LTM stack"></div>
+  <div id="mockup-labels"></div>
+  <div id="mockup-tip"></div>
+  <div class="mockup-bar">
+    <button id="mk-explode" aria-pressed="false">Explode</button>
+    <button id="mk-panels" aria-pressed="false">Hide panels</button>
+    <button id="mk-antennas" aria-pressed="false">Stow antennas</button>
+    <button id="mk-labels" aria-pressed="false">Hide labels</button>
+    <button id="mk-spin" aria-pressed="false">Pause spin</button>
+    <span class="sep"></span>
+    <button data-view="iso">Iso</button><button data-view="side">Side</button><button data-view="top">Top</button><button data-view="inside">Inside</button>
+  </div>
+</div>
+<noscript><p>The 3D mockup needs JavaScript and WebGL.</p></noscript>
+
+<h2>Key</h2>
+<ul class="key-list"><li><span class="sw" style="background:#b9bec6"></span><span><b>PROVES 1U structure</b> aluminium rails and frame, 100 × 100 × 113.5 mm</span></li><li><span class="sw" style="background:#18213d"></span><span><b>Solar faces</b> 5 faces × 6 Si cells, about 1.6 W each at normal incidence</span></li><li><span class="sw" style="background:#1b1d22"></span><span><b>PROVES boards</b> battery pack, flight controller, antenna top cap</span></li><li><span class="sw" style="background:#1d6b3a"></span><span><b>AMSAT LTM-1 stack</b> transponder (bottom), ICR (middle), LTI (top); 92 × 90 × 33 mm, 130 g</span></li><li><span class="sw" style="background:#2e7dd1"></span><span><b>18650 cells</b> 2S2P, about 48 Wh</span></li><li><span class="sw" style="background:#e0e3e8"></span><span><b>70 cm dipole</b> 2 × 178 mm tape-measure elements on the top cap (downlink)</span></li><li><span class="sw" style="background:#eb6834"></span><span><b>Proposed 2 m element</b> about 490 mm quarter-wave for the 144 MHz uplink (design TBD)</span></li><li><span class="sw" style="background:#2a78d6"></span><span><b>Coax: TX</b> transponder 432 MHz output to the top cap</span></li></ul>
+
+<h2>How the LTM-1 sits in the bus</h2>
+<ul>
+<li><b>The stack, bottom to top:</b> 18650 battery pack (lowest, to keep the centre of mass low), then the FC V5d LTM flight controller, then the
+AMSAT LTM-1. The LTM's three boards stack through a PC-104 connector: <b>transponder</b> at the bottom, then the <b>ICR</b> command receiver,
+then the <b>LTI</b> host interface on top. That puts the RF board's coax leads close to the +Z antenna cap.</li>
+<li><b>Interfaces:</b> the J30 harness (grey) carries the switched 5 V LTM_VSYS supply, CAN at 1 Mbit/s, I2C, umbilical sense and telemetry lines between the FC and the LTI.
+The LTI's USB Mini-B umbilical faces a side panel for ground access.</li>
+<li><b>Antennas:</b> the PROVES top cap's 2 × 178 mm tape elements form the 70 cm (432 MHz) downlink dipole. The orange 2 m element is a
+<b>proposed</b> addition for the 144 MHz uplink, an open design item (see <a href="spacecraft.html">Spacecraft → open items</a>).</li>
+<li><b>Fidelity:</b> board outlines, the stack order and the envelope follow AMSAT's public LTM description and the PROVES CAD dimensions.
+Component placement on each board is illustrative, not the flight layout.</li>
+</ul>
+
+</main>
+<footer class="site"><div class="inner">
+DPI Research · AMSAT · Arrow Technologies of Texas — a PROVES Kit 1U CubeSat carrying the AMSAT Linear Transponder Module.
+Analyses are engineering estimates for planning; see each page for assumptions. Site source: <a href="https://github.com/dpiresearch/sat_mission_20261025">https://github.com/dpiresearch/sat_mission_20261025</a>.
+</div></footer>
+</body>
+</html>
